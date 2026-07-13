@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="lightbulb 1">
+<path id="Vector" d="M75 70C76 65 78.5 61.5 82.5 57.5C87.5 53 90 46.5 90 40C90 32.0435 86.8393 24.4129 81.2132 18.7868C75.5871 13.1607 67.9565 10 60 10C52.0435 10 44.4129 13.1607 38.7868 18.7868C33.1607 24.4129 30 32.0435 30 40C30 45 31 51 37.5 57.5C41 61 44 65 45 70" stroke="var(--stroke-0, #1A202C)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M45 90H75" stroke="var(--stroke-0, #1A202C)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M50 110H70" stroke="var(--stroke-0, #1A202C)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

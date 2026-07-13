@@ -1,0 +1,157 @@
+/* ── Aurora background ─────────────────────── */
+@keyframes aurora {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.aurora-bg {
+  background: linear-gradient(-45deg, #fffde7, #e0f7fa, #f3e5f5, #fff8e1, #e0f2fe);
+  background-size: 400% 400%;
+  animation: aurora 10s ease infinite;
+}
+
+/* ── Float ─────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-14px) rotate(1.5deg); }
+  66%       { transform: translateY(-6px) rotate(-1deg); }
+}
+.float { animation: float 5s ease-in-out infinite; }
+.float-slow { animation: float 7s ease-in-out infinite; animation-delay: 1.2s; }
+.float-fast { animation: float 3.5s ease-in-out infinite; animation-delay: 0.6s; }
+
+/* ── Fade in ────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.22s; }
+.delay-3 { animation-delay: 0.34s; }
+.delay-4 { animation-delay: 0.46s; }
+
+/* ── Shimmer button ─────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.btn-shimmer {
+  background: linear-gradient(90deg, #FFE135 30%, #fffde0 50%, #FFE135 70%);
+  background-size: 200% auto;
+  animation: shimmer 2.4s linear infinite;
+}
+
+/* ── Pulse ring ─────────────────────────────── */
+@keyframes pulseRing {
+  0%   { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid #FFE135;
+  animation: pulseRing 1.8s ease-out infinite;
+}
+
+/* ── Spotlight card ─────────────────────────── */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
+}
+.spotlight-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 48px rgba(91,200,220,0.18);
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(91,200,220,0.12), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.spotlight-card:hover::before { opacity: 1; }
+
+/* ── Blob ───────────────────────────────────── */
+@keyframes blobMorph {
+  0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%      { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+  75%      { border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%; }
+}
+.blob { animation: blobMorph 8s ease-in-out infinite; }
+
+/* ── Star border ─────────────────────────────── */
+@keyframes starRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.star-border {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.star-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from var(--angle,0deg), transparent 80%, #FFE135 90%, #5BC8DC 95%, transparent);
+  border-radius: inherit;
+  animation: starRotate 3s linear infinite;
+  z-index: 0;
+}
+.star-border > * { position: relative; z-index: 1; }
+
+/* ── Scroll reveal ──────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Tag bounce ─────────────────────────────── */
+@keyframes tagBounce {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+.tag-bounce:hover { animation: tagBounce 0.4s ease; }
+
+/* ── Lift & Glow buttons ────────────────────── */
+.btn-lift {
+  transition: transform 0.22s cubic-bezier(0.22,1,0.36,1), box-shadow 0.22s ease;
+}
+.btn-lift:hover, .btn-lift:focus-visible {
+  transform: translateY(-4px);
+}
+.btn-lift-orange:hover, .btn-lift-orange:focus-visible {
+  box-shadow: 0 10px 36px rgba(249,115,22,0.55);
+}
+.btn-lift-teal:hover, .btn-lift-teal:focus-visible {
+  box-shadow: 0 10px 36px rgba(47,211,196,0.55);
+}
+.btn-lift-yellow:hover, .btn-lift-yellow:focus-visible {
+  box-shadow: 0 10px 36px rgba(255,225,53,0.6);
+}
+
+/* ── Reduced motion ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
