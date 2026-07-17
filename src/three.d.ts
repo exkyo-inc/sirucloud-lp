@@ -61,7 +61,8 @@ declare module 'three' {
     geometry: PlaneGeometry
   }
 
-  export class Clock {
-    getElapsedTime(): number
+  export class Timer {
+    update(): void
+    getElapsed(): number
   }
 }

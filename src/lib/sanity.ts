@@ -1,5 +1,5 @@
 import { createClient } from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
+import { createImageUrlBuilder } from '@sanity/image-url'
 import type { SanityImageSource } from '@sanity/image-url'
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID?.trim() || 'cqjhux75'
@@ -14,7 +14,7 @@ export const sanityClient = createClient({
   perspective: 'published',
 })
 
-const imageBuilder = imageUrlBuilder(sanityClient)
+const imageBuilder = createImageUrlBuilder(sanityClient)
 
 export function urlForImage(source: SanityImageSource) {
   return imageBuilder.image(source)

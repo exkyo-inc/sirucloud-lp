@@ -1,0 +1,45 @@
+/* ── 横流れ無限マーキー ─────────────────────── */
+.banner-marquee-viewport {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-marquee-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: banner-marquee-scroll 60s linear infinite;
+}
+
+.banner-marquee-viewport:hover .banner-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes banner-marquee-scroll {
+  from { transform: translateX(0); }
+  /* 一式を複製しているため、半分ずらすとシームレスに繋がる */
+  to   { transform: translateX(-50%); }
+}
+
+.banner-marquee-card {
+  flex: 0 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* gap ではなく margin にすることで、-50% 移動時のループ境界のズレをゼロにする */
+  margin-right: clamp(16px, 2vw, 28px);
+}
+
+.banner-marquee-card img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner-marquee-track {
+    animation: none;
+  }
+}

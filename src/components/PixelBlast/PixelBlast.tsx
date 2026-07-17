@@ -320,7 +320,7 @@ export default function PixelBlast({
       })
       const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material)
       scene.add(quad)
-      const clock = new THREE.Clock()
+      const timer = new THREE.Timer()
       const setSize = () => {
         const w = container.clientWidth || 1, h = container.clientHeight || 1
         renderer.setSize(w, h, false)
@@ -375,14 +375,15 @@ export default function PixelBlast({
       let raf = 0
       const animate = () => {
         if (autoPauseOffscreen && !visibilityRef.current.visible) { raf = requestAnimationFrame(animate); return }
-        uniforms.uTime.value = timeOffset + clock.getElapsedTime() * speedRef.current
+        timer.update()
+        uniforms.uTime.value = timeOffset + timer.getElapsed() * speedRef.current
         if (liquidEffect) liquidEffect.uniforms.get('uTime')!.value = uniforms.uTime.value
         if (composer) { if (touch) touch.update(); composer.render() }
         else renderer.render(scene, camera)
         raf = requestAnimationFrame(animate)
       }
       raf = requestAnimationFrame(animate)
-      threeRef.current = { renderer, scene, camera, material, clock, clickIx: 0, uniforms, resizeObserver: ro, raf, quad, timeOffset, composer, touch, liquidEffect }
+      threeRef.current = { renderer, scene, camera, material, timer, clickIx: 0, uniforms, resizeObserver: ro, raf, quad, timeOffset, composer, touch, liquidEffect }
     } else {
       const t = threeRef.current
       t.uniforms.uShapeType.value = SHAPE_MAP[variant] ?? 0
